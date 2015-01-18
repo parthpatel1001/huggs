@@ -1,6 +1,51 @@
+html {
+  font-size: 16px;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+  background-image: linear-gradient(-90deg, #8dc0b7, #4e60a1);
+}
+
+input:not([type=submit]):not([type=file]) {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
+input, select, textarea {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 9rem;
+  margin-top: 50%;
+  transition: font-size, margin-top, .25s;
+}
+
+textarea:focus, input:focus {
+  color: rgba(255, 255, 255, 0.8);
+  outline: none;
+  font-size: 4.5rem;
+  margin-top: 10%;
+  transition: font-size, margin-top, .25s;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.4);
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.4);
+}
+
+:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
 
 a {
