@@ -35,7 +35,15 @@ module.exports = {
 						callback('error getting flight data');
 					} else {
 						//reach out to the api and 
-						that.setFlightRequestToCache(airline,flight_num,'test rand'+Math.random());
+						that.setFlightRequestToCache(
+							airline,
+							flight_num,
+							{
+					  			from_airport      : Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 3).toUpperCase(),
+					  			dest_airport      : Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 3).toUpperCase(),
+					  			depart_time       : '4:00 AM',
+					  			arrive_time       : '7:00 AM'
+				  		});
 						that.getFlightData(airline,flight_num,callback);
 						// callback(JSON.stringify('empty'));
 					}

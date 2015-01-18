@@ -89,7 +89,6 @@ $(document).ready(function(){
 	});
 
 	$('.airline-input-js').on("input", function() {
-		console.log($(this).val().length);
 		if($(this).val().length > 0){}
 		else{
 			$('.flight-number').css('visibility','hidden');
@@ -98,7 +97,6 @@ $(document).ready(function(){
 
 
 	$('.flight-number').on("input", function() {
-		console.log($(this).val().length);
 		if($(this).val().length > 0){
 			$('#submit-look-up-flight').css('visibility','visible');
 		}
@@ -106,8 +104,6 @@ $(document).ready(function(){
 			$('#submit-look-up-flight').css('visibility','hidden');
 		}
 	});
-
-
 })
 
 

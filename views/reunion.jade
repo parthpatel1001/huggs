@@ -1,22 +1,30 @@
 extends layout
 
 block content
-  header
-    h1= title
-    p Welcome to #{title}
+  div(class='row')
+    div(class='col-xs-6')
+      h2(class="") #{from_airport}
+      small(class="" id='depart-time-display')
+    div(class='col-xs-6')      
+      h2(class="") #{dest_airport}
+      small(class="" id='arrive-time-display')
   div(class='row')
     div(class='col-xs-12')
-      div(class='form-group')
-      input(type='text' class='form-control airline-input-js' placeholder='Airline')
-      input(type='text' class='form-control' placeholder='Flight #')
-      button(class='btn btn-primary' id='submit-look-up-flight') Submit  
-
+      div(class='progress')
+        //- js will set the width here based on how long the flight traveled
+        div(class='progress-bar' style='' aria-valuenow="" aria-valuemin="0" aria-valuemax="100" id='flight-progress-bar' role='progressbar')
+          span(class='sr-only')
+  div(class='row')
+    div(class='col-xs-12')
+      h2(id='time-to-arrival')    
 block scripts
   //-jqeury has to be first
   script(src='/js/jquery-2.1.3.min.js')
   script(src='/js/bootstrap.min.js')
   script(src='/js/handlebars-v2.0.0.js')
   script(src='/js/typeahead.bundle.js')
+  script(src='/js/moment.js')
   script(type='text/javascript').
-    var airlines = !{airlines};
-  script(src='/js/index.js')
+    var depart_time = "!{depart_time}",
+        arrive_time = "!{arrive_time}";    
+  script(src='/js/reunion.js')
