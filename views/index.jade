@@ -2,13 +2,13 @@ extends layout
 
 block content
   header
-  div(class = "container-fluid")
+  div(class = "container-fluid blue-bg")
     div(class='row')
       div(class='col-xs-12')
-        div(class='form-group')
-        input(type='text' class='form-control airline-input-js' placeholder='e.g. United' autofocus)
-        input(type='text' class='form-control flight-number' placeholder='e.g. 1023')
-        button(class='btn outline margin-top-2' id='submit-look-up-flight') Submit  
+        div(class='form-group padding-0')
+        input(type='text' class='form-control airline-input-js padding-0' placeholder='e.g. United' autofocus)
+        input(type='text' class='form-control flight-number v-hidden padding-0' placeholder='e.g. 1023')
+        button(class='btn outline margin-top-2 v-hidden' id='submit-look-up-flight') Submit  
 
 block scripts
   //-jqeury has to be first
