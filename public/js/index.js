@@ -87,11 +87,27 @@ $(document).ready(function(){
 		$('.flight-number').css('visibility','visible');
 		$( ".flight-number" ).focus();
 	});
-	
 
-	// $( ".jjj" ).change(function() {
-	//   alert( "Handler for .change() called." );
-	// });
+	$('.airline-input-js').on("input", function() {
+		console.log($(this).val().length);
+		if($(this).val().length > 0){}
+		else{
+			$('.flight-number').css('visibility','hidden');
+		}
+	});
+
+
+	$('.flight-number').on("input", function() {
+		console.log($(this).val().length);
+		if($(this).val().length > 0){
+			$('#submit-look-up-flight').css('visibility','visible');
+		}
+		else{
+			$('#submit-look-up-flight').css('visibility','hidden');
+		}
+	});
+
+
 })
 
 
