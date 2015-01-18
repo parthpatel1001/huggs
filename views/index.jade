@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  header
+    h1= title
+    p Welcome to #{title}
+  div(class='row')
+    div(class='col-xs-12')
+      div(class='form-group')
+      input(type='text' class='form-control airline-input-js' placeholder='Airline')
+      input(type='text' class='form-control' placeholder='Flight #')
+      button(class='btn btn-primary' id='submit-look-up-flight') Submit  
+
+block scripts
+  //-jqeury has to be first
+  script(src='/js/jquery-2.1.3.min.js')
+  script(src='/js/bootstrap.min.js')
+  script(src='/js/handlebars-v2.0.0.js')
+  script(src='/js/typeahead.bundle.js')
+  script(type='text/javascript').
+    var airlines = !{airlines};
+  script(src='/js/index.js')
