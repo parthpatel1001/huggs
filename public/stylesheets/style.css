@@ -21,6 +21,10 @@ input[type=text], textarea {
   color: rgba(255,255,255, .4);
 }
 
+.form-group, .form-control {
+  padding: 0;
+}
+
 input[type=text]:focus, textarea:focus{
   outline-style:none;
   box-shadow:none;
@@ -28,12 +32,9 @@ input[type=text]:focus, textarea:focus{
   color: rgba(255,255,255, .8);
 }
 
-
-
 .flight-number, #submit-look-up-flight {
   visibility: hidden;
 }
-
 
 /* -- Drop down list styles search page */
 .tt-dataset-airports{
@@ -47,18 +48,26 @@ input[type=text]:focus, textarea:focus{
   cursor: pointer;
 }
 
-::-webkit-input-placeholder {
-   color: red;
+.btn.outline {
+  background: transparent;
+  color: rgba(255,255,255, .4);
+  border: 2px solid rgba(255,255,255, .4);
+  padding: 1rem;
+  font-size: 1.5rem;
 }
 
-:-moz-placeholder { /* Firefox 18- */
-   color: red;  
+.btn.outline:hover, .btn.outline:active, .btn.outline.pressed {
+  color: rgba(255,255,255, .8);
+  border: 2px solid rgba(255,255,255, .8);
+  outline-style:none;
+  box-shadow:none;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-   color: red;  
+.margin-top-2 {
+  margin-top: 2rem;
 }
 
-:-ms-input-placeholder {  
-   color: red;  
-}
+
+
+
+
