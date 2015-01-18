@@ -7,8 +7,10 @@ html {
 body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
-  background-image: linear-gradient(-90deg, #8dc0b7, #4e60a1);
 }
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
 
 input[type=text], textarea {
   background-color: transparent;
@@ -28,14 +30,7 @@ input[type=text]:focus, textarea:focus{
   color: rgba(255,255,255, .8);
 }
 
-
-
-.flight-number, #submit-look-up-flight {
-  visibility: hidden;
-}
-
-
-/* -- Drop down list styles search page */
+/* ----- Drop down list styles search page ----- */
 .tt-dataset-airports{
   margin-top: 2rem;
 }
@@ -47,18 +42,73 @@ input[type=text]:focus, textarea:focus{
   cursor: pointer;
 }
 
-::-webkit-input-placeholder {
-   color: red;
+
+/* ----- Button Styles ----- */
+.btn.outline {
+  background: transparent;
+  color: rgba(255,255,255, .4);
+  border: 2px solid rgba(255,255,255, .4);
+  padding: 1rem;
+  font-size: 1.5rem;
 }
 
-:-moz-placeholder { /* Firefox 18- */
-   color: red;  
+.btn.outline:hover, .btn.outline:active, .btn.outline.pressed {
+  color: rgba(255,255,255, .8);
+  border: 2px solid rgba(255,255,255, .8);
+  outline-style:none;
+  box-shadow:none;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-   color: red;  
+
+/* ----- Helpers & Shims ----- */
+.blue-bg {
+  background: rgb(141,192,183);
+  background: -moz-linear-gradient(-45deg,  rgba(141,192,183,1) 0%, rgba(78,96,161,1) 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(141,192,183,1)), color-stop(100%,rgba(78,96,161,1)));
+  background: -webkit-linear-gradient(-45deg,  rgba(141,192,183,1) 0%,rgba(78,96,161,1) 100%);
+  background: -o-linear-gradient(-45deg,  rgba(141,192,183,1) 0%,rgba(78,96,161,1) 100%);
+  background: -ms-linear-gradient(-45deg,  rgba(141,192,183,1) 0%,rgba(78,96,161,1) 100%);
+  background: linear-gradient(135deg,  rgba(141,192,183,1) 0%,rgba(78,96,161,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8dc0b7', endColorstr='#4e60a1',GradientType=1 );
 }
 
-:-ms-input-placeholder {  
-   color: red;  
+.red-bg {
+  background: rgb(250,6,54);
+  background: -moz-linear-gradient(left,  rgba(250,6,54,1) 0%, rgba(255,74,139,1) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(250,6,54,1)), color-stop(100%,rgba(255,74,139,1)));
+  background: -webkit-linear-gradient(left,  rgba(250,6,54,1) 0%,rgba(255,74,139,1) 100%);
+  background: -o-linear-gradient(left,  rgba(250,6,54,1) 0%,rgba(255,74,139,1) 100%);
+  background: -ms-linear-gradient(left,  rgba(250,6,54,1) 0%,rgba(255,74,139,1) 100%);
+  background: linear-gradient(to right,  rgba(250,6,54,1) 0%,rgba(255,74,139,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa0636', endColorstr='#ff4a8b',GradientType=1 );
 }
+
+
+/* ----- Helpers & Shims ----- */
+.v-hidden {
+  visibility: hidden;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.margin-top-2 {
+  margin-top: 2rem;
+}
+
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { ... }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { ... }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { ... }
+
+
+
+
+
