@@ -2,14 +2,13 @@ extends layout
 
 block content
   header
-    h1= title
-    p Welcome to #{title}
-  div(class='row')
-    div(class='col-xs-12')
-      div(class='form-group')
-      input(type='text' class='form-control airline-input-js' placeholder='Airline')
-      input(type='text' class='form-control' placeholder='Flight #')
-      button(class='btn btn-primary' id='submit-look-up-flight') Submit  
+  div(class = "container-fluid")
+    div(class='row')
+      div(class='col-xs-12')
+        div(class='form-group')
+        input(type='text' class='form-control airline-input-js' placeholder='e.g. United' autofocus)
+        input(type='text' class='form-control flight-number' placeholder='e.g. 1023')
+        button(class='btn btn-primary' id='submit-look-up-flight') Submit  
 
 block scripts
   //-jqeury has to be first

@@ -1,5 +1,7 @@
 html {
   font-size: 16px;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -8,51 +10,36 @@ body {
   background-image: linear-gradient(-90deg, #8dc0b7, #4e60a1);
 }
 
-input:not([type=submit]):not([type=file]) {
-  border: none;
-  padding: 0;
-  margin: 0;
+input[type=text], textarea {
   background-color: transparent;
-}
-
-input, select, textarea {
-  color: rgba(255, 255, 255, 0.4);
+  border: none;
+  box-shadow: none;
   font-size: 9rem;
-  margin-top: 50%;
-  transition: font-size, margin-top, .25s;
-}
-
-textarea:focus, input:focus {
-  color: rgba(255, 255, 255, 0.8);
+  height: 12rem;
+  line-height: 12rem;
   outline: none;
-  font-size: 4.5rem;
-  margin-top: 10%;
-  transition: font-size, margin-top, .25s;
+  color: rgba(255,255,255, .4);
 }
 
-::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.4);
+input[type=text]:focus, textarea:focus{
+  outline: 0;
+  border: none;
+  color: rgba(255,255,255, .8);
 }
 
-:-moz-placeholder {
-  /* Firefox 18- */
-  color: rgba(255, 255, 255, 0.4);
+.flight-number, #submit-look-up-flight {
+  visibility: hidden;
 }
 
-::-moz-placeholder {
-  /* Firefox 19+ */
-  color: rgba(255, 255, 255, 0.4);
+
+/* -- Drop down list styles search page */
+.tt-dataset-airports{
+  margin-top: 2rem;
 }
 
-:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-a {
-  color: #00B7FF;
-}
-
-.typeahead-empty-message {
-  padding: 5px 10px;
- text-align: center;
+.tt-dataset-airports p{
+  color: rgba(255,255,255, .8);
+  font-size: 4rem;
+  line-height: 6rem;
+  cursor: pointer;
 }

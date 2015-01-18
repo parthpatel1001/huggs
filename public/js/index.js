@@ -75,11 +75,28 @@ $(document).ready(function(){
 	  source: substringMatcher(airlines),
 	  templates: {
 		empty: [
-			'<div class="typeahead-empty-message">',
+			'<p class="typeahead-empty-message">',
 			'unable to find any Best Picture winners that match the current query',
-			'</div>'
+			'</p>'
 		].join('\n'),
-		suggestion: Handlebars.compile('<p><strong>{{airline_name}}</strong> – {{symbol}}</p>')
+		suggestion: Handlebars.compile('<p class = "airline-list">{{airline_name}} – {{symbol}}</p>')
 	  }
 	});
+
+	$('.airline-input-js').on('typeahead:selected',function(){
+		console.log('fdsa');
+		$('.flight-number').css('visibility','visible');
+	});
+	
+
+	// $( ".jjj" ).change(function() {
+	//   alert( "Handler for .change() called." );
+	// });
 })
+
+
+
+
+
+
+
