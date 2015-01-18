@@ -104,6 +104,10 @@ $(document).ready(function(){
 			$('#submit-look-up-flight').css('visibility','hidden');
 		}
 	});
+
+	$('#submit-look-up-flight').click(function(){
+		$("#huggs-form").submit();
+	});
 })
 
 
