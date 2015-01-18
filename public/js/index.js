@@ -84,8 +84,8 @@ $(document).ready(function(){
 	});
 
 	$('.airline-input-js').on('typeahead:selected',function(){
-		console.log('fdsa');
 		$('.flight-number').css('visibility','visible');
+		$( ".flight-number" ).focus();
 	});
 	
 

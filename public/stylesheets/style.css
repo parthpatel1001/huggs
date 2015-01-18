@@ -22,10 +22,13 @@ input[type=text], textarea {
 }
 
 input[type=text]:focus, textarea:focus{
-  outline: 0;
-  border: none;
+  outline-style:none;
+  box-shadow:none;
+  border-color:transparent;
   color: rgba(255,255,255, .8);
 }
+
+
 
 .flight-number, #submit-look-up-flight {
   visibility: hidden;
@@ -42,4 +45,20 @@ input[type=text]:focus, textarea:focus{
   font-size: 4rem;
   line-height: 6rem;
   cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+   color: red;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: red;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: red;  
+}
+
+:-ms-input-placeholder {  
+   color: red;  
 }
