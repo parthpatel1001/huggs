@@ -93,6 +93,7 @@ input[type=text], textarea {
   line-height: 5rem;
   outline: none;
   color: rgba(255,255,255, .4);
+  font-weight: 300;
 }
 
 input[type=text]:focus, textarea:focus{
