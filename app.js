@@ -1,15 +1,19 @@
+//modules
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var dotenv = require('dotenv').load();
 
+//route files
 var routes = require('./routes/index');
 var flights = require('./routes/flights');
 var airports = require('./routes/airlines');
 var reuinion = require('./routes/reunion');
 
+//app
 var app = express();
 
 // view engine setup
@@ -24,6 +28,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//pass env variables to router
+app.use(function(req,res,next){
+    req.ENVIRONMENT = {
+        fxml_url   : 'http://flightxml.flightaware.com/json/FlightXML2/',
+        username   : process.env.FLIGHT_AWARE_USERNAME,
+        apiKey     : process.env.FLIGHT_AWARE_APIKEY,
+        mongo_host : process.env.MONGO_HOST
+    };
+    next();
+});
+// routes
 app.use('/', routes);
 app.use('/flights',flights);
 app.use('/airlines',airports);
