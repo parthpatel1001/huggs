@@ -23,7 +23,6 @@ MongoClient.connect("mongodb://"+mongo_host, function(err, db) {
 	    password: apiKey
 	}).on('success', function(result, response) {
 		var count = 0;
-		
 		result.AllAirlinesResult.data.forEach(function (element,index,array) {
 			console.log('getting symbol: '+element);
 			restclient.get(fxml_url+'AirlineInfo',{
@@ -33,7 +32,7 @@ MongoClient.connect("mongodb://"+mongo_host, function(err, db) {
 			}).on('success',function(result,response){
 				count++;
 				//sleep so you dont get rate limited! couldnt find anything about rate limits in documentation though
-				sleep.sleep(1);	
+				sleep.usleep(250000);	
 				var name_to_use = '';
 				if(result && result['AirlineInfoResult']) {
 					if(result.AirlineInfoResult.shortname && result.AirlineInfoResult.shortname.length > 0) {
