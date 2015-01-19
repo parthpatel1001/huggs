@@ -3,10 +3,12 @@ html
   head
     title= title
     //- anything you want the browser to link to is inside /public 	
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')        
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato:100,300,700', type="text/css")
     link(rel='stylesheet', href='/stylesheets/style.css')
+
   body
     block content
     block scripts

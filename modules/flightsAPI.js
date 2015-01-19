@@ -41,8 +41,8 @@ module.exports = {
 							{
 					  			from_airport      : Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 3).toUpperCase(),
 					  			dest_airport      : Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 3).toUpperCase(),
-					  			depart_time       : '4:00 AM',
-					  			arrive_time       : '7:00 AM'
+					  			depart_time       : '10:00 PM',
+					  			arrive_time       : '2:00 AM'
 				  		});
 						that.getFlightData(airline,flight_num,callback);
 						// callback(JSON.stringify('empty'));

@@ -76,7 +76,7 @@ $(document).ready(function(){
 	  templates: {
 		empty: [
 			'<p class="typeahead-empty-message">',
-			'unable to find any Best Picture winners that match the current query',
+			'Unable to find any airlines that match the current query',
 			'</p>'
 		].join('\n'),
 		suggestion: Handlebars.compile('<p class = "airline-list">{{airline_name}} – {{symbol}}</p>')
@@ -92,6 +92,7 @@ $(document).ready(function(){
 		if($(this).val().length > 0){}
 		else{
 			$('.flight-number').css('visibility','hidden');
+			$('#submit-look-up-flight').css('visibility','hidden');
 		}
 	});
 
@@ -107,7 +108,7 @@ $(document).ready(function(){
 
 	$('#submit-look-up-flight').click(function(){
 		$("#huggs-form").submit();
-	});
+	}); 
 })
 
 

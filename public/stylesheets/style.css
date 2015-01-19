@@ -5,9 +5,81 @@ html {
 }
 
 body {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-  font-weight: 300;
+  font-family: 'Lato', Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 100;
+  font-size: 1rem;
+  color: rgba(255,255,255, .8);
 }
+
+h2.ariport-symbol, h2.timer {
+  font-size: 4.5rem;
+  margin: 0;
+  line-height: 4.5rem;
+  font-weight: 100;
+}
+
+p.time-stamp, p.hug {
+  font-weight: 700;
+  font-size: 80%;
+}
+
+/* Resetting & styling the progress bars */
+.progress{
+  margin: 3rem 0 0 0;
+  border-radius: 0px;
+  background-color: transparent;
+  box-shadow:none;
+  background-image:none;
+  padding: 1.5rem 0;
+  border-left: 2px solid rgba(255,255,255, .4);
+  border-right: 2px solid rgba(255,255,255, .4);
+  position: relative;
+}
+
+.progress::after{
+  content: "";
+  position: absolute;
+  height: 2px;
+  border-bottom: 2px solid rgba(255,255,255, .4);
+  top: 1.5rem;
+  left: 0;
+  width: 100%;
+}
+
+.progress-bar {
+  background-image: none;
+  background-color: rgba(255,255,255, .4);
+  box-shadow: none;
+  height: 2px;
+  position: relative;
+}
+
+.progress-bar::after {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top:-1.45rem;
+  width: 3rem;
+  height: 3rem;
+  content: '';
+  background: url('../images/airplane.svg') no-repeat 0 0;
+  background-size: 100%;
+  opacity: .8;
+}
+
+.progress-bar.left::after {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top:-1.45rem;
+  width: 3rem;
+  height: 3rem;
+  content: '';
+  background: url('../images/airplane.svg') no-repeat 0 0;
+  background-size: 100%;
+  opacity: .8;
+}
+
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
@@ -16,9 +88,9 @@ input[type=text], textarea {
   background-color: transparent;
   border: none;
   box-shadow: none;
-  font-size: 9rem;
-  height: 12rem;
-  line-height: 12rem;
+  font-size: 3.5rem;
+  height: 5rem;
+  line-height: 5rem;
   outline: none;
   color: rgba(255,255,255, .4);
 }
@@ -27,18 +99,31 @@ input[type=text]:focus, textarea:focus{
   outline-style:none;
   box-shadow:none;
   border-color:transparent;
+}
+
+/* Different color for some fields */
+input[type=text]::-webkit-input-placeholder {
   color: rgba(255,255,255, .8);
+}
+
+input[type=text]:-moz-placeholder {
+  color: rgba(255,255,255, .4);
+}
+input[type=text]::-moz-placeholder, input[type=text]::-moz-placeholder {
+  color: rgba(255,255,255, .4);
+}
+input[type=text]:-ms-input-placeholder, input[type=text]:-ms-input-placeholder {
+  color: rgba(255,255,255, .4);
 }
 
 /* ----- Drop down list styles search page ----- */
 .tt-dataset-airports{
-  margin-top: 2rem;
+  margin-top: .5rem;
 }
 
 .tt-dataset-airports p{
-  color: rgba(255,255,255, .8);
-  font-size: 4rem;
-  line-height: 6rem;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
   cursor: pointer;
 }
 
@@ -49,11 +134,10 @@ input[type=text]:focus, textarea:focus{
   color: rgba(255,255,255, .4);
   border: 2px solid rgba(255,255,255, .4);
   padding: 1rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .btn.outline:hover, .btn.outline:active, .btn.outline.pressed {
-  color: rgba(255,255,255, .8);
   border: 2px solid rgba(255,255,255, .8);
   outline-style:none;
   box-shadow:none;
@@ -89,8 +173,6 @@ input[type=text]:focus, textarea:focus{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa0636', endColorstr='#ff4a8b',GradientType=1 );
 }
 
-
-/* ----- Helpers & Shims ----- */
 .v-hidden {
   visibility: hidden;
 }
@@ -109,6 +191,10 @@ input[type=text]:focus, textarea:focus{
 
 .margin-top-2 {
   margin-top: 2rem;
+}
+
+.margin-top-3 {
+  margin-top: 3rem;
 }
 
 .margin-bottom-3 {
@@ -135,13 +221,60 @@ input[type=text]:focus, textarea:focus{
 
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) { ... }
+@media only screen and (min-width: 768px) {
+  input[type=text], textarea {
+    font-size: 6rem;
+    height: 7.5rem;
+    line-height: 7.5rem;
+  }
+
+  /* ----- Drop down list styles search page ----- */
+  .tt-dataset-airports{
+    margin-top: .5rem;
+  }
+
+  .tt-dataset-airports p{
+    font-size: 3.5rem;
+    line-height: 4.25rem;
+  }
+  .btn.outline {
+    padding: 1rem;
+    font-size: 2rem;
+  }
+}
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) { ... }
+@media only screen and (min-width: 992px) {
+  input[type=text], textarea {
+    font-size: 6rem;
+    height: 7.5rem;
+    line-height: 7.5rem;
+  }
+
+  /* ----- Drop down list styles search page ----- */
+  .tt-dataset-airports{
+    margin-top: 1rem;
+  }
+
+  .tt-dataset-airports p{
+    font-size: 4rem;
+    line-height: 6rem;
+  }
+  .btn.outline {
+    padding: 1rem;
+    font-size: 2rem;
+  }
+}
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min) { ... }
+@media only screen and (min-width: 1200px) {
+  input[type=text], textarea {
+    font-size: 7rem;
+    height: 9rem;
+    line-height: 9rem;
+  }
+}
+
 
 
 

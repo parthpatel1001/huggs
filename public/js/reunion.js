@@ -8,7 +8,7 @@ $(document).ready(function(){
 	$("#arrive-time-display").text(arrive_moment.format('h:mm A'));
 	
 	var trip_time = arrive_moment.diff(depart_moment,'hours');
-	
+	var progressBar_container = $('.progress-bar');
 
 	var setProgressBarToArrival = function() {
 		var traveled_time = moment().diff(depart_moment,'hours'),
@@ -19,6 +19,9 @@ $(document).ready(function(){
 		}
 
 		flight_progress_bar.css('width',percent_traveled+'%').attr('aria-valuenow',percent_traveled);
+		if(percent_traveled > 0) {
+			progressBar_container.removeClass('left');
+		}
 	};
 	var setCountDownToArrivalTimer = function() {
 		var now = moment();
