@@ -1,15 +1,4 @@
 $(document).ready(function(){
-	$('#submit-look-up-flight').click(function(e){
-		e.preventDefault();
-		// $.ajax({
-		// 	url: '/flights',
-		// 	data: {
-
-		// 	}
-		// });
-	});
-
-
 	var substringMatcher = function(airlines_list) {
 	  return function findMatches(q, cb) {
 	    var matches, substrRegex;
@@ -23,7 +12,7 @@ $(document).ready(function(){
 	    // iterate through the pool of strings and for any string that
 	    // contains the substring `q`, add it to the `matches` array
 	    $.each(airlines_list, function(i, airline) {
-	      if (substrRegex.test(airline.airline_name)) {
+	      if (substrRegex.test(airline.airline_name) || substrRegex.test(airline.symbol)) {
 	        // the typeahead jQuery plugin expects suggestions to a
 	        // JavaScript object, refer to typeahead docs for more info
 	        matches.push(airline);
@@ -107,8 +96,16 @@ $(document).ready(function(){
 	});
 
 	$('#submit-look-up-flight').click(function(){
-		$("#huggs-form").submit();
+		$("#huggs-form").submit(function(e){
+			console.log('hit submit');
+			if($("#airline").val().length <= 0 || $("#flight_num").val().length <= 0) {
+				e.preventDefault();
+				return false;
+			}
+		});	
 	}); 
+
+
 })
 
 
