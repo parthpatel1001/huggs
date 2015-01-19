@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	var depart_moment = moment(depart_time,'h:mm A'),
-	arrive_moment = moment(arrive_time,'h:mm A');
+	var depart_moment = moment(depart_time,'X'),
+	arrive_moment = moment(arrive_time,'X');
 	var time_to_arrival_container = $("#time-to-arrival"),
 	flight_progress_bar = $("#flight-progress-bar");
 
