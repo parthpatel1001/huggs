@@ -35,8 +35,8 @@ MongoClient.connect("mongodb://"+mongo_host, function(err, db) {
 				//sleep so you dont get rate limited! couldnt find anything about rate limits in documentation though
 				sleep.sleep(1);	
 				var name_to_use = '';
-				if(result && result['AirlineInfoResult'] && result.AirlineInfoResult['shortname'] && result.AirlineInfoResult['shortname'].length != 0) {
-					if(result.AirlineInfoResult.shortname) {
+				if(result && result['AirlineInfoResult']) {
+					if(result.AirlineInfoResult.shortname && result.AirlineInfoResult.shortname.length > 0) {
 						name_to_use = result.AirlineInfoResult.shortname;
 					} else {
 						name_to_use = result.AirlineInfoResult.name;
