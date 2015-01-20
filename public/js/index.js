@@ -75,6 +75,8 @@ $(document).ready(function(){
 	$('.airline-input-js').on('typeahead:selected',function(){
 		$('.flight-number').css('visibility','visible');
 		$( ".flight-number" ).focus();
+	}).on('typeahead:opened',function(){
+		$('.flight-number').css('visibility','hidden');
 	});
 
 	$('.airline-input-js').on("input", function() {
