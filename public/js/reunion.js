@@ -12,16 +12,17 @@ $(document).ready(function(){
 	var time_to_arrival_container = $("#time-to-arrival"),
 	flight_progress_bar = $("#flight-progress-bar");
 
-	$("#depart-time-display").text(depart_moment.format('h:mm A'));
-	$("#arrive-time-display").text(arrive_moment.format('h:mm A'));
+	$("#depart-time-display").text(depart_moment.format('h:mm A - MMM D'));
+	$("#arrive-time-display").text(arrive_moment.format('h:mm A - MMM D'));
 	
-	var trip_time = arrive_moment.diff(depart_moment,'hours');
+	
 	var progressBar_container = $('.progress-bar');
 
 	var setProgressBarToArrival = function() {
-		var traveled_time = moment().diff(depart_moment,'hours'),
-			percent_traveled = 0;
-
+		var traveled_time = moment().diff(depart_moment,'seconds'),
+			percent_traveled = 0,
+			trip_time = arrive_moment.diff(depart_moment,'seconds');
+			// console.log('traveled_time '+traveled_time);
 		if(traveled_time > 0 && trip_time != 0) {
 			percent_traveled = (traveled_time/trip_time) * 100;
 		}
@@ -58,6 +59,7 @@ $(document).ready(function(){
 			}
 		} else {
 			time_to_arrival_container.text('Arrived!');
+			$("#remaining-time-text-area").text('');
 		}
 	};
 	
