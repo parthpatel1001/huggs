@@ -97,7 +97,6 @@ $(document).ready(function(){
 
 	$('#submit-look-up-flight').click(function(){
 		$("#huggs-form").submit(function(e){
-			console.log('hit submit');
 			if($("#airline").val().length <= 0 || $("#flight_num").val().length <= 0) {
 				e.preventDefault();
 				return false;
