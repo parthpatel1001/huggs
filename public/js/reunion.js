@@ -1,6 +1,14 @@
 $(document).ready(function(){
 	var depart_moment = moment(depart_time,'X'),
 	arrive_moment = moment(arrive_time,'X');
+	if(!depart_time || !arrive_time || depart_time.length == 0 || arrive_time.length == 0) {
+		$("#reunion-container").hide();
+		$("#reunion-container-error").show();
+
+	}
+	$('#error-go-back').click(function(){
+		window.location.replace('/');
+	});
 	var time_to_arrival_container = $("#time-to-arrival"),
 	flight_progress_bar = $("#flight-progress-bar");
 
@@ -36,11 +44,13 @@ $(document).ready(function(){
 			time_to_arrival_minutes = Math.floor((time_to_arrival_seconds - (time_to_arrival_hours * 60 * 60))/60);
 			time_to_arrival_sec = Math.floor(time_to_arrival_seconds - (time_to_arrival_minutes*60) - (time_to_arrival_hours*60*60));
 			if(time_to_arrival_hours > 0) {
+				$("#remaining-time-unit-label").text('Hours');
 				time_to_arrival_container.text(
 					pad(time_to_arrival_hours,2) + ':' +
 					pad(time_to_arrival_minutes,2)
 				);
 			} else {
+				$("#remaining-time-unit-label").text('Minutes');
 				time_to_arrival_container.text(
 					pad(time_to_arrival_minutes,2) + ':' +
 					pad(time_to_arrival_sec,2)

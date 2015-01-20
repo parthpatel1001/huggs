@@ -2,7 +2,7 @@ extends layout
 
 block content
   div(class="red-bg")
-  div(class = "container-fluid")
+  div(class = "container-fluid" id='reunion-container')
     div(class='row margin-top-3')
     div(class='col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 padding-0')
       div(class='col-xs-6 padding-0')
@@ -22,6 +22,11 @@ block content
         div(class='square hug-icon')
           h2(class = "timer" id='time-to-arrival')    
           p(class="hug") Minutes Till Hug Time
+  div(class="container-fluid" style="display:none;" id='reunion-container-error')      
+    div(class="row margin-top-3")
+    div(class='col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 padding-0')
+      h2(class="text-left ariport-symbol") We could not find that flight!
+      button(class='btn outline margin-top-2 margin-bottom-3' id='error-go-back') Go Back
 block scripts
   //-jqeury has to be first
   script(src='/js/jquery-2.1.3.min.js')
