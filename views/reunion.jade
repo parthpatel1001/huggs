@@ -19,7 +19,11 @@ block content
             span(class='sr-only')
     div(class='row')
       div(class='col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4 text-center')
-        div(class='hug-icon square margin-top-2')
+        div(class='square margin-top-2')
+          div(class='hug-icon-stroke')
+            img(class = 'img-responsive' src='/images/hug-icon-stroke.svg')
+          div(class='hug-icon-fill' style='height:50%;')
+            img(class = 'img-responsive' src='/images/hug-icon-fill.svg')
           div(class='time-center')
             h2(class = "timer" id='time-to-arrival')    
             p(class="hug" id='remaining-time-text-area') <span id='remaining-time-unit-label'>Minutes</span> Till Hug Time

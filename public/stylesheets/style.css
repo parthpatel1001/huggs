@@ -80,16 +80,21 @@ p.time-stamp, p.hug {
   opacity: .8;
 }
 
-.hug-icon {
-  background: url('../images/hug-icon.svg') no-repeat;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
+.hug-icon-stroke, .hug-icon-fill {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.hug-icon-fill {
+  overflow: hidden;
+  opacity: .8;
 }
 
 .square {
   height: 0;
+  top:0;
+  left: 0;
   width: 100%;
   padding-bottom: 100%;
   margin: 0 auto;

@@ -10,7 +10,8 @@ $(document).ready(function(){
 		window.location.replace('/');
 	});
 	var time_to_arrival_container = $("#time-to-arrival"),
-	flight_progress_bar = $("#flight-progress-bar");
+	flight_progress_bar = $("#flight-progress-bar"),
+	hug_icon_fill = $(".hug-icon-fill");
 
 	$("#depart-time-display").text(depart_moment.format('h:mm A - MMM D'));
 	$("#arrive-time-display").text(arrive_moment.format('h:mm A - MMM D'));
@@ -28,8 +29,10 @@ $(document).ready(function(){
 		}
 
 		flight_progress_bar.css('width',percent_traveled+'%').attr('aria-valuenow',percent_traveled);
+		hug_icon_fill.css('height',percent_traveled+'%');
 		if(percent_traveled > 0) {
 			progressBar_container.removeClass('left');
+			//here
 		}
 	};
 	var setCountDownToArrivalTimer = function() {
