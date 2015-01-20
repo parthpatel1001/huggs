@@ -41,25 +41,34 @@ module.exports = {
 							username: ENVIRONMENT.username,
 							password: ENVIRONMENT.apiKey,
 							query: {
-								ident:airline+flight_num,
-								howMany:3
+								ident:airline+flight_num
 							}
 						}).on('success',function(result,response){
 							if(!response.error && result.FlightInfoExResult && result.FlightInfoExResult.flights && result.FlightInfoExResult.flights[0]) {
-
-								var flight_info = result.FlightInfoExResult.flights[2];
 								var depart_time,arrive_time,from_airport,dest_airport;
+								//go through results and find the flight that arrives today
+								//change this later to use user selected arrival date
+								for(var i=0; i < result.FlightInfoExResult.flights.length; i++) {
+									flight_info = result.FlightInfoExResult.flights[i];
 
-								if(flight_info.actualdeparturetime) {
-									depart_time = flight_info.actualdeparturetime;
-								} else {
-									depart_time = flight_info.filed_departuretime;
-								}
+									if(flight_info.actualdeparturetime) {
+										depart_time = flight_info.actualdeparturetime;
+									} else {
+										depart_time = flight_info.filed_departuretime;
+									}
 
-								if(flight_info.actualarrivaltime) {
-									arrival_time = flight_info.actualarrivaltime;
-								} else {
-									arrival_time = flight_info.estimatedarrivaltime;
+									if(flight_info.actualarrivaltime) {
+										arrival_time = flight_info.actualarrivaltime;
+									} else {
+										arrival_time = flight_info.estimatedarrivaltime;
+									}
+
+									var arrival_date_compare = new Date(arrival_time*1000).toDateString();
+									var today_date_compare = new Date().toDateString();
+									
+									if(arrival_date_compare == today_date_compare) {
+										break;
+									}
 								}
 
 								from_airport = flight_info.origin;
