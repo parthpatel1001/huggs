@@ -105,6 +105,9 @@ p.time-stamp, p.hug {
   position: absolute;
   top: 50%;
   width: 100%;
+}
+
+.y-center {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);

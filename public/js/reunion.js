@@ -27,6 +27,9 @@ $(document).ready(function(){
 		if(traveled_time > 0 && trip_time != 0) {
 			percent_traveled = (traveled_time/trip_time) * 100;
 		}
+		if(percent_traveled >= 100){
+			percent_traveled = 100;
+		}
 
 		flight_progress_bar.css('width',percent_traveled+'%').attr('aria-valuenow',percent_traveled);
 		hug_icon_fill.css('height',percent_traveled+'%');
