@@ -88,12 +88,24 @@ p.time-stamp, p.hug {
   background-size: contain;
 }
 
-.square{
+.square {
   height: 0;
   width: 100%;
   padding-bottom: 100%;
-  background-color: aqua;
   margin: 0 auto;
+  position: relative;
+}
+
+.time-center{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 
