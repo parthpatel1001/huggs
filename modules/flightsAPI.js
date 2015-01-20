@@ -42,12 +42,12 @@ module.exports = {
 							password: ENVIRONMENT.apiKey,
 							query: {
 								ident:airline+flight_num,
-								howMany:1
+								howMany:3
 							}
 						}).on('success',function(result,response){
 							if(!response.error && result.FlightInfoExResult && result.FlightInfoExResult.flights && result.FlightInfoExResult.flights[0]) {
 
-								var flight_info = result.FlightInfoExResult.flights[0];
+								var flight_info = result.FlightInfoExResult.flights[2];
 								var depart_time,arrive_time,from_airport,dest_airport;
 
 								if(flight_info.actualdeparturetime) {
@@ -64,6 +64,8 @@ module.exports = {
 
 								from_airport = flight_info.origin;
 								dest_airport = flight_info.destination;
+								from_airport = from_airport.substr(from_airport.length - 3);
+								dest_airport = dest_airport.substr(dest_airport.length - 3);
 								var responseToCache = {
 							  			from_airport      : from_airport,
 							  			dest_airport      : dest_airport,
