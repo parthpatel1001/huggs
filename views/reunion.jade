@@ -19,8 +19,9 @@ block content
             span(class='sr-only')
     div(class='row')
       div(class='col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 text-center')
-        h2(class = "timer" id='time-to-arrival')    
-        p(class="hug") Minutes Till Hug Time
+        div(class='square hug-icon')
+          h2(class = "timer" id='time-to-arrival')    
+          p(class="hug") Minutes Till Hug Time
 block scripts
   //-jqeury has to be first
   script(src='/js/jquery-2.1.3.min.js')

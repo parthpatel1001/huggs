@@ -80,6 +80,22 @@ p.time-stamp, p.hug {
   opacity: .8;
 }
 
+.hug-icon {
+  background: url('../images/hug-icon.svg') no-repeat;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+.square{
+  height: 0;
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: aqua;
+  margin: 0 auto;
+}
+
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
@@ -126,6 +142,7 @@ input[type=text]:-ms-input-placeholder, input[type=text]:-ms-input-placeholder {
   font-size: 1.75rem;
   line-height: 2.25rem;
   cursor: pointer;
+  font-weight: 300;
 }
 
 
