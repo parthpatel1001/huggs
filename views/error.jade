@@ -1,6 +1,12 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  div(class="blue-bg")
+  div(class = "container-fluid")
+    div(class='row')
+      div(class='col-xs-12')
+        h2(class="text-left ariport-symbol") Couldn't find any hugs!
+        h1(class="text-left ariport-symbol")= message
+        h2(class="text-left ariport-symbol")= error.status
+        hs(class="text-left ariport-symbol") #{error.stack}
+
