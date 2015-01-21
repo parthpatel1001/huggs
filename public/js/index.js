@@ -113,6 +113,7 @@ $(document).ready(function(){
 	}).on('typeahead:opened',function(){
 		validAirlineSelected = false;
 		flightNumInput.css('visibility','hidden');
+		submitLookUpFlightButton.css('visibility','hidden');
 	}).on('typeahead:closed',function(){
 		if(isAirlineInputValid()) {
 			flightNumInput.css('visibility','visible');
