@@ -1,4 +1,10 @@
 $(document).ready(function(){
+	var airlineInput = $('#airline'),
+		flightNumInput = $('#flight_num'),
+		submitLookUpFlightButton = $('#submit-look-up-flight'),
+		hugsForm = $("huggs-forms"),
+		validAirlineSelected = false;
+
 	var substringMatcher = function(airlines_list) {
 	  return function findMatches(q, cb) {
 	    var matches, substrRegex;
@@ -43,7 +49,7 @@ $(document).ready(function(){
 		}
 	};
 	var isAirlineInputValid = function() {
-		return airlineInput.val().length > 0;
+		return validAirlineSelected && airlineInput.val().length > 0;
 	};
 	var giveFocusTo = function(element,removeBlinkerClass) {
 		if(removeBlinkerClass !== undefined) { 
@@ -80,10 +86,7 @@ $(document).ready(function(){
 
 	// );
 	// airports.initialize();
-	var airlineInput = $('#airline'),
-		flightNumInput = $('#flight_num'),
-		submitLookUpFlightButton = $('#submit-look-up-flight'),
-		hugsForm = $("huggs-forms");
+
 	
 	airlineInput.typeahead({
 	  hint: true,
@@ -106,8 +109,9 @@ $(document).ready(function(){
 	});
 
 	airlineInput.on('typeahead:selected',function(){
-		
+		validAirlineSelected = true;
 	}).on('typeahead:opened',function(){
+		validAirlineSelected = false;
 		flightNumInput.css('visibility','hidden');
 	}).on('typeahead:closed',function(){
 		if(isAirlineInputValid()) {
@@ -117,25 +121,29 @@ $(document).ready(function(){
 	});
 
 	airlineInput.keypress(function(e) {
-		if(isAirlineInputValid()) {
+		if(airlineInput.val().length > 0) {
 			$('.airline-input-js').removeClass('border-left-blink');
 		} else {
 			$('.airline-input-js').addClass('border-left-blink');
 		}
-		if(e.which == 13) {
+		if(e.which == 13 || e.which == 9) {
+			console.log('key press: ' +e.which);
 			e.preventDefault();
 		}
 	});
 
-	// airlineInput.blur(function(){
-	// 	if(isAirlineInputValid()) {
+	airlineInput.blur(function(){
+		if(airlineInput.val().length > 0) {
+			$('.airline-input-js').removeClass('border-left-blink');
+		} else {
+			$('.airline-input-js').addClass('border-left-blink');
+		}
+	});
 
-	// 	}
-	// 		showIfValid(isAirlineInputValid,flightNumInput);
-	// 		giveFocusTo(flightNumInput);
-	// });
-
-
+	airlineInput.focus(function(){
+		$('.airline-input-js').removeClass('border-left-blink');
+	});
+	airlineInput.focus();
 	airlineInput.on("input", function() {
 		// hideIfInvalid(isAirlineInputValid,[flightNumInput,submitLookUpFlightButton]);
 	});
