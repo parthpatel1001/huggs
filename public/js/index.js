@@ -81,6 +81,10 @@ $(document).ready(function(){
 		$('.flight-number').css('visibility','visible');
 	});
 
+	$('.airline-input-js').focusin(function() {
+		$('.airline-input-js').removeClass('border-left-blink');
+	});
+
 	$('.airline-input-js').on("input", function() {
 		if($(this).val().length > 0){}
 		else{

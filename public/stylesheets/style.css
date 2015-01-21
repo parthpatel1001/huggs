@@ -122,7 +122,7 @@ p.time-stamp, p.hug {
 
 input[type=text], textarea {
   background-color: transparent;
-  border: none;
+  border:0;
   box-shadow: none;
   font-size: 3.5rem;
   height: 5rem;
@@ -130,6 +130,65 @@ input[type=text], textarea {
   outline: none;
   color: rgba(255,255,255, .4);
   font-weight: 300;
+}
+
+.border-left-blink {
+  border-left: 1px solid rgba(255,255,255, .4) !important;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+
+@keyframes "blink" {
+  from,to {
+  border-left: 1px solid rgba(255,255,255, 0);
+}
+ 50% {
+    border-left: 1px solid rgba(255,255,255, .4);
+ }
+
+}
+
+@-moz-keyframes blink {
+  from,to {
+  border-left: 1px solid rgba(255,255,255, 0);
+}
+ 50% {
+   border-left: 1px solid rgba(255,255,255, .4);
+ }
+
+}
+
+@-webkit-keyframes "blink" {
+  from,to {
+  border-left: 1px solid rgba(255,255,255, 0);
+}
+ 50% {
+   border-left: 1px solid rgba(255,255,255, .4);
+ }
+
+}
+
+@-ms-keyframes "blink" {
+  from,to {
+  border-left: 1px solid rgba(255,255,255, 0);
+}
+ 50% {
+   border-left: 1px solid rgba(255,255,255, .4);
+ }
+
+}
+
+@-o-keyframes "blink" {
+  from,to {
+  border-left: 1px solid rgba(255,255,255, 0);
+}
+ 50% {
+   border-left: 1px solid rgba(255,255,255, .4);
+ }
 }
 
 input[type=text]:focus, textarea:focus{
