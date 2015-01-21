@@ -16,6 +16,7 @@
     "mongodb": "*",
     "monk": "*",
     "morgan": "~1.0.0",
+    "newrelic": "^1.14.7",
     "redis": "^0.12.1",
     "restler": "^3.2.2",
     "serve-favicon": "~2.1.3",
