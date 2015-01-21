@@ -16,16 +16,13 @@ router.get('/', function(req, res, next) {
 	var flights = flightAPI.getApiClient(req.ENVIRONMENT);	
 
 	var airline = req.param('airline'),
-	flight_num = req.param('flight_num');
+	flight_num = req.param('flight_num'),
+	id = req.param('id');
   	
-  	flights.getFlightData(airline,flight_num,function(reply){
+  	flights.getFlightData(airline,flight_num,id,function(reply){
   		res.writeHead(200, { 'Content-Type': 'application/json' });	
 	
-		res.end(JSON.stringify({
-	  		airline: airline,
-	  		flight_num : flight_num,
-	  		cache_res : reply
-	  	}));
+		res.end(JSON.stringify(reply));
   	});
 });
 

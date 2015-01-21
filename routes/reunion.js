@@ -14,10 +14,12 @@ var flightAPI = require('../modules/flightsAPI');
 router.get('/', function(req, res, next) {
 	var airline = req.param('airline'),
 	flight_num = req.param('flight_num'),
+	id         = req.param('id');
+
 	flights = flightAPI.getApiClient(req.ENVIRONMENT);
 	
 
-  	flights.getFlightData(airline,flight_num,function(flightData){
+  	flights.getFlightData(airline,flight_num,id,function(flightData){
   		res.render('reunion',flightData);
   	});	
 });
