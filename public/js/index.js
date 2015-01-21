@@ -22,7 +22,35 @@ $(document).ready(function(){
 	    cb(matches);
 	  };
 	};	
-
+	
+	var showIfValid = function(isValid,elements,hideOtherwiseElements,then) {
+		if(!(elements instanceof Array)) { elements = [elements]; }
+		if(isValid()) {
+			for(var i in elements) { elements[i].css('visibility','visible'); } // ask joe if css display:none -> jquery show/hide is ok in css
+		} else if(hideOtherwiseElements !== undefined) {
+			if(!(hideOtherwiseElements instanceof Array)) { hideOtherwiseElements = [hideOtherwiseElements]; }
+			for(var i in elements) { hideOtherwiseElements[i].css('visibility','hidden'); }
+		}
+		if(then !== undefined) { then(elements); }
+	};
+	var hideIfInvalid = function(isValid,elements,showOtherwiseElements) {
+		if(!(elements instanceof Array)) { elements = [elements]; }
+		if(isValid()) {
+			for(var i in elements) { elements[i].css('visibility','visible'); } // ask joe if css display:none -> jquery show/hide is ok in css
+		} else if(showOtherwiseElements !== undefined) {
+			if(!(showOtherwiseElements instanceof Array)) { showOtherwiseElements = [showOtherwiseElements]; }
+			for(var i in elements) { showOtherwiseElements[i].css('visibility','hidden'); }
+		}
+	};
+	var isAirlineInputValid = function() {
+		return airlineInput.val().length > 0;
+	};
+	var giveFocusTo = function(element,removeBlinkerClass) {
+		if(removeBlinkerClass !== undefined) { 
+			removeBlinkerClass.removeClass('border-left-blink');
+		}
+		element.focus();
+	};
 	// var airports = [];
 
 	// var airports = new Bloodhound({
@@ -52,11 +80,16 @@ $(document).ready(function(){
 
 	// );
 	// airports.initialize();
+	var airlineInput = $('#airline'),
+		flightNumInput = $('#flight_num'),
+		submitLookUpFlightButton = $('#submit-look-up-flight'),
+		hugsForm = $("huggs-forms");
 	
-	$('.airline-input-js').typeahead({
+	airlineInput.typeahead({
 	  hint: true,
 	  highlight: true,
-	  minLength: 1
+	  minLength: 1,
+	  autoselect: true
 	},
 	{
 	  name: 'airports',
@@ -72,40 +105,56 @@ $(document).ready(function(){
 	  }
 	});
 
-	$('.airline-input-js').on('typeahead:selected',function(){
-		$('.flight-number').css('visibility','visible');
-		$( ".flight-number" ).focus();
+	airlineInput.on('typeahead:selected',function(){
+		
 	}).on('typeahead:opened',function(){
-		$('.flight-number').css('visibility','hidden');
+		flightNumInput.css('visibility','hidden');
 	}).on('typeahead:closed',function(){
-		$('.flight-number').css('visibility','visible');
-	});
-
-	$('.airline-input-js').focusin(function() {
-		$('.airline-input-js').removeClass('border-left-blink');
-	});
-
-	$('.airline-input-js').on("input", function() {
-		if($(this).val().length > 0){}
-		else{
-			$('.flight-number').css('visibility','hidden');
-			$('#submit-look-up-flight').css('visibility','hidden');
+		if(isAirlineInputValid()) {
+			flightNumInput.css('visibility','visible');
+			giveFocusTo(flightNumInput, $('.airline-input-js'));
 		}
 	});
 
+	airlineInput.keypress(function(e) {
+		if(isAirlineInputValid()) {
+			$('.airline-input-js').removeClass('border-left-blink');
+		} else {
+			$('.airline-input-js').addClass('border-left-blink');
+		}
+		if(e.which == 13) {
+			e.preventDefault();
+		}
+	});
 
-	$('.flight-number').on("input", function() {
+	// airlineInput.blur(function(){
+	// 	if(isAirlineInputValid()) {
+
+	// 	}
+	// 		showIfValid(isAirlineInputValid,flightNumInput);
+	// 		giveFocusTo(flightNumInput);
+	// });
+
+
+	airlineInput.on("input", function() {
+		// hideIfInvalid(isAirlineInputValid,[flightNumInput,submitLookUpFlightButton]);
+	});
+
+
+	flightNumInput.on("input", function() {
 		if($(this).val().length > 0){
-			$('#submit-look-up-flight').css('visibility','visible');
+			submitLookUpFlightButton.css('visibility','visible');
 		}
 		else{
-			$('#submit-look-up-flight').css('visibility','hidden');
+			submitLookUpFlightButton.css('visibility','hidden');
 		}
 	});
+	
 
-	$('#submit-look-up-flight').click(function(){
-		$("#huggs-form").submit(function(e){
-			if($("#airline").val().length <= 0 || $("#flight_num").val().length <= 0) {
+
+	submitLookUpFlightButton.click(function(){
+		hugsForm.submit(function(e){
+			if(airlineInput.val().length <= 0 || hugsForm.val().length <= 0) {
 				e.preventDefault();
 				return false;
 			}
@@ -121,3 +170,4 @@ $(document).ready(function(){
 
 
 
+	
