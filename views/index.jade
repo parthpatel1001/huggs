@@ -7,8 +7,11 @@ block content
       div(class='col-xs-12')
         div(class='form-group padding-0')
         form(action="reunion" method="GET" id='huggs-form' name='huggs-form')
-          input(type='text' class='form-control airline-input-js padding-0 border-left-blink' name='airline' id='airline' placeholder='Airline' required selected)
-          input(type='text' class='form-control flight-number v-hidden padding-0' name='flight_num' id='flight_num' placeholder='Flight #' autocomplete="off" novalidate)
+          input(type='text' id='airline' class='form-control airline-input-js padding-0 border-left-blink' name='airline'  placeholder='Airline' required selected)
+          input(type='text' id='flight_num' class='form-control flight-number v-hidden padding-0' name='flight_num'  placeholder='Flight #' autocomplete="off" novalidate)
+          div(class='result-list-container')
+            h2(class="text-left ariport-symbol" id='result-error-message')
+            ul(id='flight-result-list')
           button(class='btn outline margin-top-2 v-hidden margin-bottom-3' id='submit-look-up-flight' type='submit') Submit
 block scripts
   //-jqeury has to be first
@@ -16,6 +19,7 @@ block scripts
   script(src='/js/bootstrap.min.js')
   script(src='/js/handlebars-v2.0.0.js')
   script(src='/js/typeahead.bundle.js')
+  script(src='/js/moment.js')  
   script(type='text/javascript').
     var airlines = !{airlines};
   script(src='/js/index.js')

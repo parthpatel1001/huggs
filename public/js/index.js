@@ -2,8 +2,15 @@ $(document).ready(function(){
 	var airlineInput = $('#airline'),
 		flightNumInput = $('#flight_num'),
 		submitLookUpFlightButton = $('#submit-look-up-flight'),
-		hugsForm = $("huggs-forms"),
-		validAirlineSelected = false;
+		hugsForm = $("#huggs-forms"),
+		flightResultList = $("#flight-result-list"),
+		flightResultListErrorMessage = $('#result-error-message'),
+		flightId = $("#id"),
+		validAirlineSelected = false,
+		waitingForListOfFlights = false,
+		selectedFlightDate = false;
+	
+	// airlineInput.focus();
 
 	var substringMatcher = function(airlines_list) {
 	  return function findMatches(q, cb) {
@@ -51,43 +58,83 @@ $(document).ready(function(){
 	var isAirlineInputValid = function() {
 		return validAirlineSelected && airlineInput.val().length > 0;
 	};
+	var isFlightNumInputValid = function() {
+		return flightNumInput.val().length > 0;
+	};
+	var isValidFlightNumDateSelected = function() {
+		return selectedFlightDate;
+	};
 	var giveFocusTo = function(element,removeBlinkerClass) {
 		if(removeBlinkerClass !== undefined) { 
 			removeBlinkerClass.removeClass('border-left-blink');
 		}
 		element.focus();
 	};
-	// var airports = [];
 
-	// var airports = new Bloodhound({
-	//   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-	//   queryTokenizer: Bloodhound.tokenizers.whitespace,
-	//   // limit: 500,
-	//   local: $.map(airports, function(airport) { return { value: airport }; }),
-	//   prefetch:{
-	//   	url : '/airports',
-	//   	filter: function(list) {
-	//   		return $.map(list,function(airport){ return {value: airport}; });
-	//   	}
-	//   }
-	//   // ,
-	//   // remote:{
-	//   // 	'/airports'
-	//   // },
-	// });
-	// $.ajax(
-	// 	dataType: 'JSON',
-	// 	url: '/airports',
-	// 	success: function(response) {
-	// 		console.log('got airports: ');
-	// 		console.dir(response);
-	// 		airports = response;
-	// 	}
+	var selectFlightDate = function() {
+		$(this).addClass('flight-date-selected');
+		var idFound = $(this).find('.result-flight-id-js').text();
+		window.location.href = '/reunion?airline='+airlineInput.val()+'&flight_num='+flightNumInput.val()+'&id='+idFound;
+	};	
 
-	// );
-	// airports.initialize();
+	var setFlightResultList = function() {
+		if(!waitingForListOfFlights) {
+			waitingForListOfFlights = true;
+			$.ajax({
+				dataType: 'JSON',
+				type: 'GET',
+				url: '/flights',
+				data: {
+					airline : airlineInput.val(),
+					flight_num : flightNumInput.val()
+				},
+				success: function(response) {
+					flightResultList.empty();
+					if(response.error) {
+						flightResultListErrorMessage.text('No flights found');
+						return;
+					}
+					for(var i in response) {
+						var departTimeMoment =moment(response[i].depart_time,'X'),
+							arriveTimeMoment = moment(response[i].arrive_time,'X'),
+							
+							departTimeDayOfWeek = departTimeMoment.format('dddd'),
+							departTimeDayOfMonth = departTimeMoment.format('D'),
+							departAirport = response[i].from_airport,
 
-	
+							arriveTimeDayOfWeek = arriveTimeMoment.format('dddd'),
+							arriveTimeDayOfMonth = arriveTimeMoment.format('D'),
+							arriveAirport = response[i].dest_airport;
+							
+
+
+						var disp =  '<span>'+departTimeDayOfWeek+'</span> '+'<span>'+departTimeDayOfMonth+'</span> '+'<span>'+departAirport+'</span> - ';
+							disp += '<span>'+departTimeDayOfWeek+'</span> '+'<span>'+arriveTimeDayOfMonth+'</span> '+'<span>'+arriveAirport+'</span> ';
+							disp += '<span style="visibility:hidden;" class="result-flight-id-js">'+response[i].faId+'</span>';
+
+						var li = $('<li class="result-flight-js">'+disp+'</li>');
+
+						flightResultList.append(li);
+						
+						li.click(selectFlightDate);
+						
+
+					}
+				},
+				error: function(response) {
+					flightResultList.empty();
+					flightResultListErrorMessage.text('No flights found');
+					selectedFlightDate = false;
+				},
+				complete: function() {
+					waitingForListOfFlights = false;
+				}
+			});
+		}
+	};
+
+
+
 	airlineInput.typeahead({
 	  hint: true,
 	  highlight: true,
@@ -108,12 +155,15 @@ $(document).ready(function(){
 	  }
 	});
 
+	/*
+	 * airline input events
+	 */
 	airlineInput.on('typeahead:selected',function(){
 		validAirlineSelected = true;
 	}).on('typeahead:opened',function(){
 		validAirlineSelected = false;
 		flightNumInput.css('visibility','hidden');
-		submitLookUpFlightButton.css('visibility','hidden');
+		// submitLookUpFlightButton.css('visibility','hidden');
 	}).on('typeahead:closed',function(){
 		if(isAirlineInputValid()) {
 			flightNumInput.css('visibility','visible');
@@ -128,7 +178,6 @@ $(document).ready(function(){
 			$('.airline-input-js').addClass('border-left-blink');
 		}
 		if(e.which == 13 || e.which == 9) {
-			console.log('key press: ' +e.which);
 			e.preventDefault();
 		}
 	});
@@ -142,34 +191,29 @@ $(document).ready(function(){
 	});
 
 	airlineInput.focus(function(){
+		$(this).attr('placeholder',"");
 		$('.airline-input-js').removeClass('border-left-blink');
-	});
-	airlineInput.focus();
-	airlineInput.on("input", function() {
-		// hideIfInvalid(isAirlineInputValid,[flightNumInput,submitLookUpFlightButton]);
-	});
-
-
-	flightNumInput.on("input", function() {
-		if($(this).val().length > 0){
-			submitLookUpFlightButton.css('visibility','visible');
-		}
-		else{
-			submitLookUpFlightButton.css('visibility','hidden');
-		}
 	});
 	
 
+	/*
+	 * flight number input events
+	 */
+	flightNumInput.focus(function(){
+		flightResultList.empty();
+	});
 
-	submitLookUpFlightButton.click(function(){
-		hugsForm.submit(function(e){
-			if(airlineInput.val().length <= 0 || hugsForm.val().length <= 0) {
-				e.preventDefault();
-				return false;
-			}
-		});	
-	}); 
+	flightNumInput.blur(function() {
+		setFlightResultList();
+	});
 
+	flightNumInput.keypress(function(e) {
+		//dont submit the form if you press enter or submit
+		if(e.which == 13 || e.which == 9) {
+			e.preventDefault(); //leave the input, which will trigger the list to appear
+			flightNumInput.blur();
+		}
+	});
 
 })
 
