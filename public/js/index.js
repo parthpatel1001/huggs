@@ -193,6 +193,7 @@ $(document).ready(function(){
 	airlineInput.focus(function(){
 		$(this).attr('placeholder',"");
 		$('.airline-input-js').removeClass('border-left-blink');
+		//$('#result-error-message').css('display','none');
 	});
 	
 

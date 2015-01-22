@@ -222,24 +222,40 @@ input[type=text]:-ms-input-placeholder, input[type=text]:-ms-input-placeholder {
   line-height: 2.25rem;
   cursor: pointer;
   font-weight: 300;
+  padding: 0 .5em;
 }
 
 .tt-cursor{
-  border: 2px solid rgba(255,255,255, .4);  
-/*  background:   linear-gradient(
+background-color: rgba(255,255,255, .4);
+/*  border: 2px solid rgba(255,255,255, .4);  
+  background:   linear-gradient(
       rgba(0, 0, 0, 0.7), 
       rgba(0, 0, 0, 0.7)
     );*/
 }
 
 /* ----- Result List styles search page ------ */
-.result-flight-js{ /* -- li around each flight result -- */
 
+
+/* -- li around each flight result -- */
+
+ul#flight-result-list{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.flight-date-selected{
+#flight-result-list li{
+  cursor: pointer;
+  display: inline-block;
   border: 2px solid rgba(255,255,255, .4);
+  padding:2em;
+  text-align: center;  
 }
+
+.result-flight-js{}
+
+.flight-date-selected{/*  border: 2px solid rgba(255,255,255, .4);*/}
 
 
 /* ----- Button Styles ----- */
@@ -250,13 +266,13 @@ input[type=text]:-ms-input-placeholder, input[type=text]:-ms-input-placeholder {
   padding: 1rem;
   font-size: 1rem;
 }
-
+/*
 .btn.outline:hover, .btn.outline:active, .btn.outline.pressed {
   border: 2px solid rgba(255,255,255, .8);
   outline-style:none;
   box-shadow:none;
 }
-
+*/
 
 /* ----- Helpers & Shims ----- */
 .blue-bg, .red-bg {
