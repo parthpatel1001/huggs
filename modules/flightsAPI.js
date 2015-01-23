@@ -77,9 +77,19 @@ module.exports = {
 					if(flightListFromCache.error) {
 						return callback({error:true});
 					}
-					
+					var returnOnlyFutureFlights = [];
+
 					if(id === undefined || id === null) {
-						return callback(flightListFromCache);
+						for(var i in flightListFromCache) {
+							var today = new Date() ;
+							var arrive = new Date(flightListFromCache[i].arrive_time * 1000);
+							if(arrive.getDate() >= today.getDate()) {
+								returnOnlyFutureFlights.push(flightListFromCache[i]);
+							} else {
+								break;
+							}
+						}
+						return callback(returnOnlyFutureFlights.reverse());
 					}
 
 					for(var i in flightListFromCache) {

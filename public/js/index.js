@@ -94,7 +94,7 @@ $(document).ready(function(){
 				},
 				success: function(response) {
 					flightResultList.empty();
-					if(response.error) {
+					if(response.error || response.length == 0) {
 						flightResultListErrorMessage.text('No flights found');
 						return;
 					}
@@ -113,7 +113,7 @@ $(document).ready(function(){
 							
 
 
-						var disp =  '<p>'+departTimeDayOfWeek+'</p> '+'<h2>'+departTimeDayOfMonth+'</h2> ';
+						var disp =  '<h2>'+arriveTimeDayOfWeek+'</h2> '+'<h3>'+arriveTimeDayOfMonth+'</h3> ';
 							// disp += '<span>'+departTimeDayOfWeek+'</span> '+'<span>'+arriveTimeDayOfMonth+'</span> '+'<span>'+arriveAirport+'</span> ';
 							disp += '<span style="visibility:hidden;" class="result-flight-id-js">'+response[i].faId+'</span>';
 
