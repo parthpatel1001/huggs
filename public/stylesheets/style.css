@@ -23,6 +23,16 @@ p.time-stamp, p.hug {
   font-size: 80%;
 }
 
+a.back {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+a.back:hover {
+  text-decoration: underline;
+}
+
+
 /* Resetting & styling the progress bars */
 .progress{
   margin: 3rem 0 0 0;
@@ -324,6 +334,10 @@ ul#flight-result-list{
   padding: 0;
 }
 
+.padding-top-1{
+  padding-top: 1em;
+}
+
 .margin-top-0 {
   margin-top: 1rem;
 }
@@ -361,6 +375,10 @@ ul#flight-result-list{
   margin-bottom: 3rem;
 }
 
+
+.img-responsive{
+  display: inline-block;
+}
 
 
 /* Small devices (tablets, 768px and up) */

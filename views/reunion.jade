@@ -3,7 +3,7 @@ extends layout
 block content
   div(class="red-bg")
   div(class = "container-fluid" id='reunion-container')
-    div(class='row margin-top-3')
+    div(class='row margin-top-2')
     div(class='col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 padding-0')
       div(class='col-xs-6 padding-0')
         h2(class="text-left ariport-symbol") #{from_airport}
@@ -20,13 +20,14 @@ block content
     div(class='row')
       div(class='col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4 text-center')
         div(class='square margin-top-2')
-          div(class='hug-icon-stroke')
+          div(class='hug-icon-stroke margin-bottom-1')
             img(class = 'img-responsive' src='/images/hug-icon-stroke.svg')
           div(class='hug-icon-fill' style='height:50%;')
             img(class = 'img-responsive' src='/images/hug-icon-fill.svg')
           div(class='time-center y-center')
             h2(class = "timer" id='time-to-arrival')    
             p(class="hug" id='remaining-time-text-area') <span id='remaining-time-unit-label'>Minutes</span> Till Hug Time
+
   div(class="container-fluid" style="display:none;" id='reunion-container-error')      
     div(class="row margin-top-3")
     div(class='col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 padding-0')
