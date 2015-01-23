@@ -217,11 +217,3 @@ $(document).ready(function(){
 	});
 
 })
-
-
-
-
-
-
-
-	
