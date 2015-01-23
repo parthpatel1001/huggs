@@ -187,16 +187,24 @@ $(document).ready(function(){
 			$('.airline-input-js').removeClass('border-left-blink');
 		} else {
 			$('.airline-input-js').addClass('border-left-blink');
+			$(this).attr('placeholder',"Airline");
 		}
 	});
 
 	airlineInput.focus(function(){
-		$(this).attr('placeholder',"");
+		if(airlineInput.val().length > 0) {
+			$(this).attr('placeholder',"");
+		}
 		$('.airline-input-js').removeClass('border-left-blink');
 		//$('#result-error-message').css('display','none');
 	});
 	
-
+	//add a if statement check here to check if desktop or not
+	//something like:
+	//if(descktopVersion) {
+		// airlineInput.focus();		
+	// }
+	
 	/*
 	 * flight number input events
 	 */
