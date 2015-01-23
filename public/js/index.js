@@ -187,22 +187,27 @@ $(document).ready(function(){
 			$('.airline-input-js').removeClass('border-left-blink');
 		} else {
 			$('.airline-input-js').addClass('border-left-blink');
-			$(this).attr('placeholder',"Airline");
+			$(this).attr('placeholder',"Enter Airline");
 		}
 	});
 
 	airlineInput.focus(function(){
+		//when the element is focused, take away the placeholder, but only if nothing is typed inside
 		if(airlineInput.val().length > 0) {
 			$(this).attr('placeholder',"");
 		}
 		$('.airline-input-js').removeClass('border-left-blink');
 		//$('#result-error-message').css('display','none');
 	});
-	
+	airlineInput.click(function(){
+		//if you proactively click into the element, take away the place holder
+		$(this).attr('placeholder',"");
+		$('.airline-input-js').removeClass('border-left-blink');
+	});
 	//add a if statement check here to check if desktop or not
 	//something like:
 	//if(descktopVersion) {
-		// airlineInput.focus();		
+		airlineInput.focus();		
 	// }
 	
 	/*
