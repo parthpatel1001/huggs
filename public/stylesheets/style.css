@@ -249,11 +249,24 @@ ul#flight-result-list{
   cursor: pointer;
   display: inline-block;
   border: 2px solid rgba(255,255,255, .4);
-  padding:2em;
+  padding:1em;
+  margin: 1em;
   text-align: center;  
 }
 
-.result-flight-js{}
+#flight-result-list li:hover{
+  background-color: rgba(255,255,255, .4);
+}
+
+.result-flight-js h2 {
+  margin: 0;
+  font-size: 4rem;
+  font-weight: 100;
+}
+
+.result-flight-js h3 {
+  margin: 1em 0 0 0;
+}
 
 .flight-date-selected{/*  border: 2px solid rgba(255,255,255, .4);*/}
 

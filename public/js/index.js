@@ -113,7 +113,7 @@ $(document).ready(function(){
 							
 
 
-						var disp =  '<h2>'+arriveTimeDayOfWeek+'</h2> '+'<h3>'+arriveTimeDayOfMonth+'</h3> ';
+						var disp =  '<h3>'+arriveTimeDayOfWeek+'</h3> '+'<h2>'+arriveTimeDayOfMonth+'</h2> ';
 							// disp += '<span>'+departTimeDayOfWeek+'</span> '+'<span>'+arriveTimeDayOfMonth+'</span> '+'<span>'+arriveAirport+'</span> ';
 							disp += '<span style="visibility:hidden;" class="result-flight-id-js">'+response[i].faId+'</span>';
 
