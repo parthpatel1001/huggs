@@ -10,7 +10,11 @@ $(document).ready(function(){
 		waitingForListOfFlights = false,
 		selectedFlightDate = false;
 	
-	// airlineInput.focus();
+	function is_touch_device() {
+	 return (('ontouchstart' in window)
+	      || (navigator.MaxTouchPoints > 0)
+	      || (navigator.msMaxTouchPoints > 0));
+	}
 
 	var substringMatcher = function(airlines_list) {
 	  return function findMatches(q, cb) {
@@ -94,22 +98,23 @@ $(document).ready(function(){
 						flightResultListErrorMessage.text('No flights found');
 						return;
 					}
+					flightResultListErrorMessage.css('display','none');
 					for(var i in response) {
 						var departTimeMoment =moment(response[i].depart_time,'X'),
 							arriveTimeMoment = moment(response[i].arrive_time,'X'),
 							
-							departTimeDayOfWeek = departTimeMoment.format('dddd'),
+							departTimeDayOfWeek = departTimeMoment.format('ddd'),
 							departTimeDayOfMonth = departTimeMoment.format('D'),
 							departAirport = response[i].from_airport,
 
-							arriveTimeDayOfWeek = arriveTimeMoment.format('dddd'),
+							arriveTimeDayOfWeek = arriveTimeMoment.format('ddd'),
 							arriveTimeDayOfMonth = arriveTimeMoment.format('D'),
 							arriveAirport = response[i].dest_airport;
 							
 
 
-						var disp =  '<span>'+departTimeDayOfWeek+'</span> '+'<span>'+departTimeDayOfMonth+'</span> '+'<span>'+departAirport+'</span> - ';
-							disp += '<span>'+departTimeDayOfWeek+'</span> '+'<span>'+arriveTimeDayOfMonth+'</span> '+'<span>'+arriveAirport+'</span> ';
+						var disp =  '<p>'+departTimeDayOfWeek+'</p> '+'<h2>'+departTimeDayOfMonth+'</h2> ';
+							// disp += '<span>'+departTimeDayOfWeek+'</span> '+'<span>'+arriveTimeDayOfMonth+'</span> '+'<span>'+arriveAirport+'</span> ';
 							disp += '<span style="visibility:hidden;" class="result-flight-id-js">'+response[i].faId+'</span>';
 
 						var li = $('<li class="result-flight-js">'+disp+'</li>');
@@ -189,6 +194,7 @@ $(document).ready(function(){
 			$('.airline-input-js').addClass('border-left-blink');
 			$(this).attr('placeholder',"Enter Airline");
 		}
+		flightResultListErrorMessage.css('display','block');
 	});
 
 	airlineInput.focus(function(){
@@ -197,28 +203,30 @@ $(document).ready(function(){
 			$(this).attr('placeholder',"");
 		}
 		$('.airline-input-js').removeClass('border-left-blink');
-		//$('#result-error-message').css('display','none');
+		
+		flightResultListErrorMessage.css('display','none');
 	});
 	airlineInput.click(function(){
 		//if you proactively click into the element, take away the place holder
 		$(this).attr('placeholder',"");
 		$('.airline-input-js').removeClass('border-left-blink');
 	});
-	//add a if statement check here to check if desktop or not
-	//something like:
-	//if(descktopVersion) {
-		airlineInput.focus();		
-	// }
+	
+	if (!is_touch_device()) {
+		airlineInput.focus();
+	}
 	
 	/*
 	 * flight number input events
 	 */
 	flightNumInput.focus(function(){
 		flightResultList.empty();
+		flightResultListErrorMessage.css('display','none');
 	});
 
 	flightNumInput.blur(function() {
 		setFlightResultList();
+		flightResultListErrorMessage.css('display','block');
 	});
 
 	flightNumInput.keypress(function(e) {
