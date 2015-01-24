@@ -202,7 +202,8 @@ $(document).ready(function(){
 			$(this).attr('placeholder',"");
 		}
 		$('.airline-input-js').removeClass('border-left-blink');
-		
+		flightResultList.empty();
+		flightResultListErrorMessage.empty();
 		flightResultListErrorMessage.css('display','none');
 	});
 	airlineInput.click(function(){
