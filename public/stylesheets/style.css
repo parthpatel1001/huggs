@@ -26,6 +26,7 @@ p.time-stamp, p.hug {
 footer a  {
   color: rgba(255, 255, 255, .8);
   text-decoration: none;
+  font-weight: 300;
 }
 
 footer a:hover {
