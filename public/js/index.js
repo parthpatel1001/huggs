@@ -139,7 +139,6 @@ $(document).ready(function(){
 	};
 
 
-
 	airlineInput.typeahead({
 	  hint: true,
 	  highlight: true,

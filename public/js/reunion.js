@@ -17,6 +17,14 @@ $(document).ready(function(){
 	$("#arrive-time-display").text(arrive_moment.format('h:mm A - MMM D'));
 	
 	
+	var hammertime = new Hammer(document.body, {});
+	hammertime.on('swipe', function(ev) {
+		if(ev.direction == 4) {
+			window.history.back();
+		}
+	});
+
+
 	var progressBar_container = $('.progress-bar');
 
 	var setProgressBarToArrival = function() {
@@ -80,9 +88,5 @@ $(document).ready(function(){
 })
 
 
-var hammertime = new Hammer(myElement, myOptions);
-hammertime.on('pan', function(ev) {
-    console.log(ev);
-});
 
 
