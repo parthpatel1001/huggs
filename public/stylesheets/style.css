@@ -408,7 +408,7 @@ ul#flight-result-list{
   input[type=text], textarea {
     font-size: 3.5rem;
     height: 4.5rem;
-    line-height: 7.5rem;
+    line-height: 4.5rem;
   }
 
   h2.ariport-symbol, h2.timer {
@@ -430,7 +430,7 @@ ul#flight-result-list{
   input[type=text], textarea {
     font-size: 5rem;
     height: 6.5rem;
-    line-height: 7.5rem;
+    line-height: 6.5rem;
   }
 
   /* ----- Drop down list styles search page ----- */
