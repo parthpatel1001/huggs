@@ -403,11 +403,11 @@ ul#flight-result-list{
 }
 
 
-/* Small devices (tablets, 768px and up) */
+/* Small devices (tablets, 350px and up) */
 @media only screen and (min-width: 350px) {
   input[type=text], textarea {
-    font-size: 6rem;
-    height: 7.5rem;
+    font-size: 4rem;
+    height: 5.5rem;
     line-height: 7.5rem;
   }
 
@@ -428,8 +428,8 @@ ul#flight-result-list{
 /* Small devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   input[type=text], textarea {
-    font-size: 6rem;
-    height: 7.5rem;
+    font-size: 5rem;
+    height: 6.5rem;
     line-height: 7.5rem;
   }
 
