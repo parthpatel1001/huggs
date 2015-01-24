@@ -192,7 +192,7 @@ $(document).ready(function(){
 			$('.airline-input-js').removeClass('border-left-blink');
 		} else {
 			$('.airline-input-js').addClass('border-left-blink');
-			$(this).attr('placeholder',"Enter Airline");
+			$(this).attr('placeholder'," Enter Airline");
 		}
 		flightResultListErrorMessage.css('display','block');
 	});
