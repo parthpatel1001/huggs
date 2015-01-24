@@ -406,8 +406,8 @@ ul#flight-result-list{
 /* Small devices (tablets, 350px and up) */
 @media only screen and (min-width: 350px) {
   input[type=text], textarea {
-    font-size: 4rem;
-    height: 5.5rem;
+    font-size: 3.5rem;
+    height: 4.5rem;
     line-height: 7.5rem;
   }
 
