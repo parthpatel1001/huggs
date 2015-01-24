@@ -46,7 +46,7 @@ $(document).ready(function(){
 			//here
 		}
 	};
-	var setCountDownToArrivalTimer = function() {
+	var setCountDownToArrivalTimer = function(interval) {
 		var now = moment();
 		var time_to_arrival_seconds = arrive_moment.diff(now,'seconds');
 		function pad(num, size) {
@@ -74,6 +74,7 @@ $(document).ready(function(){
 		} else {
 			time_to_arrival_container.text('Arrived!');
 			$("#remaining-time-text-area").text('');
+			clearInterval(interval);
 		}
 	};
 	
