@@ -40,15 +40,19 @@ block content
       button(class='btn outline margin-top-2 margin-bottom-3' id='error-go-back') Go Back
 
 block scripts
-  //-jqeury has to be first
-  script(src='/js/jquery-2.1.3.min.js')
-  script(src='/js/bootstrap.min.js')
-  script(src='/js/handlebars-v2.0.0.js')
-  script(src='/js/typeahead.bundle.js')
-  script(src='/js/moment.js')
   script(type='text/javascript').
     var depart_time = "!{depart_time}",
-        arrive_time = "!{arrive_time}";    
-  script(src='/js/hammer.min.js')   
-  script(src='/js/reunion.js')
-  script(src='/js/ga.js')  
+        arrive_time = "!{arrive_time}";  
+  if env == "production"
+    script(src='/js/production.vendor.min.js')
+    script(src='/js/production.reunion.min.js')  
+  else    
+    //-jqeury has to be first
+    script(src='/js/jquery-2.1.3.min.js')
+    script(src='/js/bootstrap.min.js')
+    script(src='/js/handlebars-v2.0.0.js')
+    script(src='/js/typeahead.bundle.js')
+    script(src='/js/moment.js') 
+    script(src='/js/hammer.min.js')
+    script(src='/js/reunion.js')
+    script(src='/js/ga.js')  
