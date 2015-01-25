@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
   airlineClient.getAirlines(function(airlines){
 
 	res.render('index', {
-		airlines: JSON.stringify(airlines)
+		airlines: JSON.stringify(airlines),
+		env: req.ENVIRONMENT.env
 	});
   });
 });
