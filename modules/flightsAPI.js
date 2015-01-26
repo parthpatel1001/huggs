@@ -83,11 +83,11 @@ module.exports = {
 						for(var i in flightListFromCache) {
 							var today = new Date() ;
 							var arrive = new Date(flightListFromCache[i].arrive_time * 1000);
+							console.log('arrive time: '+arrive.getTime() + ' '+arrive.toDateString()+' '+arrive.toTimeString() );
+							console.log('today time: '+today.getTime() + ' '+today.toDateString()+' '+today.toTimeString());
 							//set the h m s ms to 0 to compare the day of arrive vs today
 							today.setHours(0,0,0,0);
 							arrive.setHours(0,0,0,0);
-							console.log('arrive time: '+arrive.getTime() + ' '+arrive.toDateString());
-							console.log('today time: '+today.getTime() + ' '+today.toDateString());
 							if(arrive.getTime() >= today.getTime()) {
 								returnOnlyFutureFlights.push(flightListFromCache[i]);
 							} else {
