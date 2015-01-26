@@ -132,7 +132,7 @@ footer a:hover {
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
-input[type=text], textarea {
+input[type=text], input[type=number], textarea {
   background-color: transparent;
   border:0;
   box-shadow: none;
@@ -203,25 +203,30 @@ input[type=text], textarea {
  }
 }
 
-input[type=text]:focus, textarea:focus{
+input[type=text]:focus, input[type=number]:focus,  textarea:focus{
   outline-style:none;
   box-shadow:none;
   border-color:transparent;
 }
 
 /* Different color for some fields */
-input[type=text]::-webkit-input-placeholder {
+input[type=text]::-webkit-input-placeholder, input[type=number]::-webkit-input-placeholder {
   color: rgba(255,255,255, .8);
 }
 
-input[type=text]:-moz-placeholder {
+input[type=text]:-moz-placeholder, input[type=number]:-moz-placeholder {
   color: rgba(255,255,255, .4);
 }
-input[type=text]::-moz-placeholder, input[type=text]::-moz-placeholder {
+input[type=text]::-moz-placeholder, input[type=number]::-moz-placeholder {
   color: rgba(255,255,255, .4);
 }
-input[type=text]:-ms-input-placeholder, input[type=text]:-ms-input-placeholder {
+input[type=text]:-ms-input-placeholder, input[type=text]:-ms-input-placeholder, input[type=number]:-ms-input-placeholder {
   color: rgba(255,255,255, .4);
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
 /* ----- Drop down list styles search page ----- */
@@ -239,11 +244,6 @@ input[type=text]:-ms-input-placeholder, input[type=text]:-ms-input-placeholder {
 
 .tt-cursor{
 background-color: rgba(255,255,255, .4);
-/*  border: 2px solid rgba(255,255,255, .4);  
-  background:   linear-gradient(
-      rgba(0, 0, 0, 0.7), 
-      rgba(0, 0, 0, 0.7)
-    );*/
 }
 
 /* ----- Result List styles search page ------ */
@@ -291,13 +291,7 @@ ul#flight-result-list{
   padding: 1rem;
   font-size: 1rem;
 }
-/*
-.btn.outline:hover, .btn.outline:active, .btn.outline.pressed {
-  border: 2px solid rgba(255,255,255, .8);
-  outline-style:none;
-  box-shadow:none;
-}
-*/
+
 
 /* ----- Helpers & Shims ----- */
 .blue-bg, .red-bg {
@@ -427,7 +421,7 @@ ul#flight-result-list{
 
 /* Small devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  input[type=text], textarea {
+  input[type=text], input[type=number], textarea {
     font-size: 5rem;
     height: 6.5rem;
     line-height: 6.5rem;
@@ -450,7 +444,7 @@ ul#flight-result-list{
 
 /* Medium devices (desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  input[type=text], textarea {
+  input[type=text], input[type=number], textarea {
     font-size: 6rem;
     height: 7.5rem;
     line-height: 7.5rem;
@@ -473,7 +467,7 @@ ul#flight-result-list{
 
 /* Large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  input[type=text], textarea {
+  input[type=text], input[type=number], textarea {
     font-size: 7rem;
     height: 9rem;
     line-height: 9rem;
