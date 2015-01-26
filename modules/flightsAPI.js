@@ -80,13 +80,20 @@ module.exports = {
 					var returnOnlyFutureFlights = [];
 
 					if(id === undefined || id === null) {
+						console.log(flightListFromCache);
 						for(var i in flightListFromCache) {
 							var today = new Date() ;
 							var arrive = new Date(flightListFromCache[i].arrive_time * 1000);
-							if(arrive.getDate() >= today.getDate()) {
+							//set the h m s ms to 0 to compare the day of arrive vs today
+							today.setHours(0,0,0,0);
+							arrive.setHours(0,0,0,0);
+							
+							if(arrive.getTime() >= today.getTime()) {
 								returnOnlyFutureFlights.push(flightListFromCache[i]);
 							} else {
-								break;
+								//shouldn't break here because sometimes the api responded with weird date shit
+								//like -1 as a arrival time
+								//break
 							}
 						}
 						return callback(returnOnlyFutureFlights.reverse());
