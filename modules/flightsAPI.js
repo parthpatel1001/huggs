@@ -83,7 +83,7 @@ module.exports = {
 						for(var i in flightListFromCache) {
 							var today = new Date() ;
 							var arrive = new Date(flightListFromCache[i].arrive_time * 1000);
-							if(arrive.getDate() > today.getDate()) {
+							if(arrive.getDate() >= today.getDate()) {
 								returnOnlyFutureFlights.push(flightListFromCache[i]);
 							} else {
 								break;

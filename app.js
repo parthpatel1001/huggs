@@ -16,6 +16,9 @@ var reuinion = require('./routes/reunion');
 //app
 var app = express();
 
+//set environment
+app.set('env',process.env.APP_ENV);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -35,7 +38,8 @@ app.use(function(req,res,next){
         fxml_url   : 'http://flightxml.flightaware.com/json/FlightXML2/',
         username   : process.env.FLIGHT_AWARE_USERNAME,
         apiKey     : process.env.FLIGHT_AWARE_APIKEY,
-        mongo_host : process.env.MONGO_HOST
+        mongo_host : process.env.MONGO_HOST,
+        env        : app.get('env')
     };
     next();
 });

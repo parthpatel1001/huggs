@@ -20,6 +20,7 @@ router.get('/', function(req, res, next) {
 	
 
   	flights.getFlightData(airline,flight_num,id,function(flightData){
+  		flightData['env'] = req.ENVIRONMENT.env;
   		res.render('reunion',flightData);
   	});	
 });
