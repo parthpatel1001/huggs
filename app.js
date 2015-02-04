@@ -13,6 +13,14 @@ var flights = require('./routes/flights');
 var airports = require('./routes/airlines');
 var reuinion = require('./routes/reunion');
 
+//dont die
+domain = require('domain'),
+d = domain.create();
+
+d.on('error', function(err) {
+  console.error(err);
+});
+
 //app
 var app = express();
 
